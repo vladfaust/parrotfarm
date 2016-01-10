@@ -20,3 +20,7 @@ Seriously, ParrotFarm is ready to be deployed to Heroku. Manual can be found her
 
 It's also important to use another buildpack, more info here: https://coderwall.com/p/6bmygq/heroku-rails-bower
 
+### Roadmap
+* Proper AngularJS testing (where are still issues with Capybara)
+* Usage of AngularJS resources and factories
+* Usage of AngularJS ui-routes (?)
