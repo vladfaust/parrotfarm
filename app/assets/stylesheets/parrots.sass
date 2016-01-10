@@ -1,0 +1,36 @@
+#filter-color, #new-parrot-color
+  option, &
+    text-transform: capitalize
+
+#new-parrot-button
+  float: right
+
+.parrots-table
+  width: 100%
+
+  .pagination
+    margin: 0
+
+  thead tr td
+    padding-bottom: 0em
+
+.parrot
+  &:not(:first-child) td:not(.text-right)
+    padding-top: 1em
+  &:first-child td.text-right
+    padding-bottom: 1em
+
+.parrot-avatar
+  height: 5em
+  width:  5em
+  margin-right: 1em
+
+.parrot-bow
+  height: 3rem
+
+.parrot-avatar, .parrot-description, .parrots-table .reset-filter-button, .parrots-table .pagination
+  display: inline-block
+  vertical-align: middle
+
+.tribal-switch:not(.active)
+  opacity: 0.3

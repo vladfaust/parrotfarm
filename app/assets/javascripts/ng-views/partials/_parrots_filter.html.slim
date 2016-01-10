@@ -1,0 +1,103 @@
+.well
+  .form-horizontal
+
+    / ID
+    .form-group
+      label.control-label.col-sm-4 for="filter-id" ID
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.id" id="filter-id" ng-change="vm.indexFiltered()" placeholder="Certain value"
+
+    hr
+
+    / Name
+    .form-group
+      label.control-label.col-sm-4 for="filter-name" Name
+      .col-sm-8
+        input.form-control type="text" ng-model="vm.filter.name" id="filter-name" ng-change="vm.indexFiltered()" placeholder="Start typing"
+
+    / Sex
+    .form-group
+      label.control-label.col-sm-4 Sex
+      .col-sm-8
+        label.radio-inline
+          input type="radio" name="sex" id="sex-male" value="male" ng-model="vm.filter.sex" ng-change="vm.indexFiltered()" Male
+        label.radio-inline
+          input type="radio" name="sex" id="sex-female" value="female" ng-model="vm.filter.sex" ng-change="vm.indexFiltered()" Female
+        label.radio-inline
+          input type="radio" name="sex" id="sex-any" value="" ng-model="vm.filter.sex" ng-change="vm.indexFiltered()" Any
+
+    / Color
+    .form-group
+      label.control-label.col-sm-4 for="filter-color" Color
+      .col-sm-8
+        select.form-control ng-model="vm.filter.color" id="filter-color" ng-change="vm.indexFiltered()" style="color: {{vm.getColorHexByName(vm.filter.color)}}"
+          option value="" style="color: #000 !important" Any
+          option ng-repeat="color in vm.colors" value="{{color.name}}" style="color: {{color.hex_value}}"
+            | {{color.name}}
+
+    / Age from
+    .form-group
+      label.control-label.col-sm-4 for="filter-age-min" Age from
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.ageMin" id="filter-age-min" ng-change="vm.indexFiltered()"
+
+    / Age to
+    .form-group
+      label.control-label.col-sm-4 for="filter-age-max" Age to
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.ageMax" id="filter-age-max" ng-change="vm.indexFiltered()"
+
+    / Tribal?
+    .form-group
+      label.control-label.col-sm-4
+        | Tribal (
+        span.glyphicon.glyphicon-apple
+        | )?
+      .col-sm-8
+        label.radio-inline
+          input type="radio" name="tribal" id="tribal-true" value="true" ng-model="vm.filter.tribal" ng-change="vm.indexFiltered()" True
+        label.radio-inline
+          input type="radio" name="tribal" id="tribal-false" value="false" ng-model="vm.filter.tribal" ng-change="vm.indexFiltered()" False
+        label.radio-inline
+          input type="radio" name="tribal" id="tribal-any" value="" ng-model="vm.filter.tribal" ng-change="vm.indexFiltered()" No matter
+
+    hr
+
+    / Descendants
+    .form-group
+      label.control-label.col-sm-4 for="filter-descendants"
+        ins D
+        | escendants
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.descendants" id="filter-descendants" ng-change="vm.indexFiltered()" placeholder="Root ID"
+
+    / Ancestors
+    .form-group
+      label.control-label.col-sm-4 for="filter-ancestors"
+        ins A
+        | ncestors
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.ancestors" id="filter-ancestors" ng-change="vm.indexFiltered()" placeholder="Node ID"
+
+    / Children
+    .form-group
+      label.control-label.col-sm-4 for="filter-children"
+        ins C
+        | hildren
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.children" id="filter-children" ng-change="vm.indexFiltered()" placeholder="Parent ID"
+
+    / Parents
+    .form-group
+      label.control-label.col-sm-4 for="filter-parents"
+        ins P
+        | arents
+      .col-sm-8
+        input.form-control type="number" ng-model="vm.filter.parents" id="filter-parents" ng-change="vm.indexFiltered()" placeholder="Child ID"
+
+    hr
+
+    / Reset button
+    .row
+      .col-sm-8.col-sm-offset-4
+        button.btn.btn-warning.btn-lg.btn-block ng-click="vm.resetFilter(true)" Reset filter

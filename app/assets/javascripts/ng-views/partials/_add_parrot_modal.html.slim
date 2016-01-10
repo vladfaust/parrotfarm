@@ -1,0 +1,80 @@
+/ This button opens the modal
+button.btn.btn-success.btn-block#new-parrot-button [
+  data-toggle="modal"
+  data-target="#new-parrot-modal"
+] Add a new parrot
+
+- left_col_size = 2 # Custom modal left column sizing (must be even)
+
+.modal.fade#new-parrot-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        / We want to reset the values within modal on close
+        button.close [
+          data-dismiss="modal"
+          ng-click="vm.resetNew()"
+          aria-label="Close"
+        ]
+          | &times;
+        h4.modal-title#new-parrot-modal-title Add a new parrot
+      .modal-body
+        .form-horizontal#new-parrot-form
+          / An alert will be seen only if @new.error is present
+          .alert.alert-danger#new-error ng-show="vm.new.error"
+            | {{vm.new.error}}
+
+          / Parrot's parents
+          .form-group
+            label.control-label class="col-sm-#{ left_col_size }" Parents
+
+            / Mother
+            div class="col-sm-#{ (12 - left_col_size)/2}"
+              select.form-control ng-model="vm.new.motherId" id="new-parrot-mother" style="color: {{vm.getColorHexByParrotId(vm.new.motherId)}}"
+                option value="" style="color: #000 !important" Motherless
+                option ng-repeat="parent in vm.getAvailableParents('female', vm.new.fatherId)" value="{{parent.id}}" id="new-parrot-mother-{{parent.id}}" style="color: {{parent.color_hex}}"
+                  | {{parent.name}} # {{parent.id}}
+
+            / Father
+            div class="col-sm-#{ (12 - left_col_size)/2}"
+              select.form-control ng-model="vm.new.fatherId" id="new-parrot-father" style="color: {{vm.getColorHexByParrotId(vm.new.fatherId)}}"
+                option value="" style="color: #000 !important" Fatherless
+                option ng-repeat="parent in vm.getAvailableParents('male', vm.new.motherId)" value="{{parent.id}}" id="new-parrot-father-{{parent.id}}" style="color: {{parent.color_hex}}"
+                  | {{parent.name}} # {{parent.id}}
+
+          / Parrot's sex
+          .form-group
+            label.control-label class="col-sm-#{ left_col_size }" Sex
+            div class="col-sm-#{ 12 - left_col_size }"
+              label.radio-inline
+                input type="radio" name="sex" id="new-parrot-sex-male" value="male" ng-model="vm.new.sex" Male
+              label.radio-inline
+                input type="radio" name="sex" id="new-parrot-sex-female" value="female" ng-model="vm.new.sex" Female
+          / Its color
+          .form-group
+            label.control-label class="col-sm-#{ left_col_size }" for="new-parrot-color" Color
+            div class="col-sm-#{ 12 - left_col_size }"
+              select.form-control ng-model="vm.new.color" id="new-parrot-color" style="color: {{vm.getColorHexById(vm.new.color)}}"
+                option ng-repeat="color in vm.colors" value="{{color.id}}" style="color: {{color.hex_value}}"
+                  | {{color.name}}
+
+          / Its age
+          .form-group
+            label.control-label class="col-sm-#{ left_col_size }" for="new-parrot-age" Age
+            div class="col-sm-#{ 12 - left_col_size }"
+              input.form-control type="number" ng-model="vm.new.age" id="new-parrot-age"
+
+          / Whether is it tribal
+          /.form-group
+          /  label.control-label class="col-sm-#{ left_col_size }" Tribal?
+          /  div class="col-sm-#{ 12 - left_col_size }"
+          /    label.radio-inline
+          /      input type="radio" name="tribal" id="new-parrot-tribal-true" value="true" ng-model="vm.new.tribal" True
+          /    label.radio-inline
+          /      input type="radio" name="tribal" id="new-parrot-tribal-false" value="false" ng-model="vm.new.tribal" False
+
+      .modal-footer
+        / Again, we want to reset values on modal close event
+        button.btn.btn-primary#close-new-parrot-modal ng-click="vm.resetNew()" data-dismiss="modal" Close
+        / And finally
+        button.btn.btn-success#create-new-parrot-button ng-click="vm.create()" Submit

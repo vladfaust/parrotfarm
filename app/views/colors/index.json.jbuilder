@@ -1,0 +1,1 @@
+json.array! @colors, :id, :name, :hex_value
