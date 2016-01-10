@@ -1,0 +1,6 @@
+{
+  "name": "parrotfarm",
+  "dependencies": {
+    "angular-bootstrap": "latest"
+  }
+}

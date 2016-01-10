@@ -10,6 +10,8 @@
     colors:     []
     new:        {} # Brand new parrot values
     filter:     {}
+
+    # It's for pagination
     index:      {
       currentPage:  1
       itemsPerPage: 5
@@ -46,7 +48,7 @@
           toReturn.push(parrot)
       toReturn
 
-    # Returns list of filtered parrots
+    # Returns a list of filtered parrots
     indexFiltered: ->
       @$http
         .get '/api/parrots.json',
@@ -110,6 +112,7 @@
               @new.error = errorResponse.data.error
         )
 
+    # CO
     switchTribal: (parrot) ->
       @$http
         .patch "/api/parrots/#{ parrot.id }.json",
@@ -137,7 +140,7 @@
       @new.motherId = null
       @new.fatherId = null
 
-    # ?
+    # CO
     resetFilter: (reloadParrots = false) ->
       @filter.name   = ""
       @filter.sex    = ""
