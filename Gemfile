@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.2.3' # EDGE as is
 
 gem 'rails', '4.2.4'
-gem 'sqlite3'
 
 gem 'responders'
 
@@ -29,6 +28,7 @@ gem 'forgery'
 gem 'genealogy'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug'
   gem 'bullet'
 end
