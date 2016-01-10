@@ -18,3 +18,5 @@ You can do whatever you want with this code. You can print it and feed your dog 
 
 Seriously, ParrotFarm is ready to be deployed to Heroku. Manual can be found here: https://devcenter.heroku.com/articles/getting-started-with-rails4
 
+It's also important to use another buildpack, more info here: https://coderwall.com/p/6bmygq/heroku-rails-bower
+

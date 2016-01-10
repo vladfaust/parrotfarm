@@ -6,7 +6,6 @@ gem 'rails', '4.2.4'
 
 gem 'responders'
 
-gem 'bower-rails'
 gem 'sprockets', '2.12.3' # gem 'angular-rails-templates' conflicts with newer versions :(
 
 gem 'slim'

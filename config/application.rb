@@ -36,5 +36,19 @@ module Parrotfarm
     config.active_record.raise_in_transactional_callbacks = true
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+
+    # More at https://coderwall.com/p/6bmygq/heroku-rails-bower
+    #
+    # We don't want the default of everything that isn't js or css, because it pulls too many things in
+    config.assets.precompile.shift
+
+    # Explicitly register the extensions we are interested in compiling
+    config.assets.precompile.push(Proc.new do |path|
+      File.extname(path).in? [
+                                 '.html', '.erb', '.haml', '.slim',        # Templates
+                                 '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+                                 '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+                             ]
+    end)
   end
 end
