@@ -39,6 +39,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do
