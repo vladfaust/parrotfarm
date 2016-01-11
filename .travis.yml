@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.2.3
+env:
+  - DB=sqlite
+script:
+  - npm install -g bower
+  - bower install
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - xvfb-run -a bundle exec rspec spec
+bundler_args: --without production
+addons:
+  code_climate:
+    repo_token: 5b2111d879716addf9b725b889d138d7552083d682618463b1e3bbbeba9feb3c

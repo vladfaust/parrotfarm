@@ -3,11 +3,9 @@ source 'https://rubygems.org'
 ruby '2.2.3' # EDGE as is
 
 gem 'rails', '4.2.4'
-gem 'sqlite3'
 
 gem 'responders'
 
-gem 'bower-rails'
 gem 'sprockets', '2.12.3' # gem 'angular-rails-templates' conflicts with newer versions :(
 
 gem 'slim'
@@ -29,6 +27,7 @@ gem 'forgery'
 gem 'genealogy'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'byebug'
   gem 'bullet'
 end
@@ -40,6 +39,7 @@ group :test do
   gem 'capybara-webkit'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'codeclimate-test-reporter'
 end
 
 group :development do

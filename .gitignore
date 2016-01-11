@@ -21,3 +21,6 @@
 
 # Ignore downloadable files
 /vendor
+
+# And precompiled assets too
+/public/assets

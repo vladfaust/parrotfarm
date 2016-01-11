@@ -1,0 +1,7 @@
+{
+  "name": "parrotfarm",
+  "dependencies": {
+    "angular-bootstrap": "latest",
+    "angular-loading-bar": "ezburg/angular-loading-bar"
+  }
+}
