@@ -1,5 +1,5 @@
 ## ParrotFarm
-[![Code Climate](https://codeclimate.com/github/vladfaust/parrotfarm/badges/gpa.svg)](https://codeclimate.com/github/vladfaust/parrotfarm) [![Test Coverage](https://codeclimate.com/github/vladfaust/parrotfarm/badges/coverage.svg)](https://codeclimate.com/github/vladfaust/parrotfarm/coverage) [![Build Status](https://travis-ci.org/vladfaust/parrotfarm.svg)](https://travis-ci.org/vladfaust/parrotfarm)
+[![Code Climate](https://codeclimate.com/github/vladfaust/parrotfarm/badges/gpa.svg)](https://codeclimate.com/github/vladfaust/parrotfarm) [![Test Coverage](https://codeclimate.com/github/vladfaust/parrotfarm/badges/coverage.svg)](https://codeclimate.com/github/vladfaust/parrotfarm/coverage) [![Codeship Status for vladfaust/parrotfarm](https://codeship.com/projects/b15c6f50-9d81-0133-71f6-5e859e904c15/status?branch=master)](https://codeship.com/projects/127510)
 > ParrotFarm is a fully-featured Behavior-Driven-Developed Ruby on Rails app with AngularJS as a front-end framework.
 
 ### Technologies included
