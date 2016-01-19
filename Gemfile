@@ -52,5 +52,6 @@ group :production do
 
   gem 'rails_12factor'
   gem 'puma'
+  gem 'puma_worker_killer'
 end
 
