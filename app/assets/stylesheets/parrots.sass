@@ -7,6 +7,7 @@
 
 .parrots-table
   width: 100%
+  min-width: 32em
 
   .pagination
     margin: 0
@@ -32,5 +33,11 @@
   display: inline-block
   vertical-align: middle
 
-.tribal-switch:not(.active)
+.tribal-switch:not(.active), .btn[disabled] > *
   opacity: 0.3
+
+.parrot-actions
+  min-width: 15em
+
+.table-responsive
+  border: none

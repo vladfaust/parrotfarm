@@ -6,7 +6,7 @@ class Parrot < ActiveRecord::Base
 
   validates :color_id, presence: true
   validates :sex,      presence: true
-  validates :age,      inclusion: { in: 0..240, message: 'Age must be between 0 and 240' }
+  validates :age,      inclusion: { in: 1..240, message: 'Age must be between 1 and 240' }
   validates :tribal,   inclusion: [ true, false ]
   validate :both_parents_must_be_present
   validate :both_parents_must_exist

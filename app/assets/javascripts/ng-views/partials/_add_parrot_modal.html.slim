@@ -50,6 +50,13 @@ button.btn.btn-success.btn-block#new-parrot-button [
                 input type="radio" name="sex" id="new-parrot-sex-male" value="male" ng-model="vm.new.sex" Male
               label.radio-inline
                 input type="radio" name="sex" id="new-parrot-sex-female" value="female" ng-model="vm.new.sex" Female
+
+          / Its name
+          .form-group
+            label.control-label class="col-sm-#{ left_col_size }" for="new-parrot-name" Name
+            div class="col-sm-#{ 12 - left_col_size }"
+              input.form-control type="text" ng-model="vm.new.name" id="new-parrot-name"
+
           / Its color
           .form-group
             label.control-label class="col-sm-#{ left_col_size }" for="new-parrot-color" Color
