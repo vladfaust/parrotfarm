@@ -1,75 +1,78 @@
 .alert.alert-danger#index-error ng-show="vm.indexError"
   | {{vm.indexError}}
 
-table.parrots-table
-  / Head
-  thead ng-show="vm.parrots.length"
-    / TODO template this, don't have time
-    tr
-      td
-        button.btn.btn-default Total: {{vm.parrots.length}}
-        = ' - '
-        uib-pagination.pagination total-items="vm.parrots.length" ng-model="vm.index.currentPage" items-per-page="vm.index.itemsPerPage" max-size="5"
-        hr
-      td.text-right
-        button.btn.btn-warning.reset-filter-button ng-click="vm.resetFilter(true)" Reset filter
-        hr
+.table-responsive
+  table.parrots-table
+    / Head
+    thead ng-show="vm.parrots.length"
+      / TODO template this, don't have time
+      tr
+        td colspan="2"
+          button.btn.btn-default Total: {{vm.parrots.length}}
+          = ' - '
+          uib-pagination.pagination total-items="vm.parrots.length" ng-model="vm.index.currentPage" items-per-page="vm.index.itemsPerPage" max-size="5"
+          = ' - '
+          button.btn.btn-warning.reset-filter-button ng-click="vm.resetFilter(true)" Reset filter
+          hr
 
-  / Body
-  tbody
-    .text-center ng-hide="vm.parrots.length"
-      h2 Nothing found.
-      br
-      button.btn.btn-warning ng-click="vm.resetFilter(true)" Reset filter
+    / Body
+    tbody
+      .text-center ng-hide="vm.parrots.length"
+        h2 Nothing found.
+        br
+        button.btn.btn-warning ng-click="vm.resetFilter(true)" Reset filter
 
-    tr.parrot ng-repeat="parrot in vm.parrots.slice((vm.index.currentPage - 1) * vm.index.itemsPerPage, vm.index.currentPage * vm.index.itemsPerPage)"
+      tr.parrot ng-repeat="parrot in vm.parrots.slice((vm.index.currentPage - 1) * vm.index.itemsPerPage, vm.index.currentPage * vm.index.itemsPerPage)"
 
-      / Info
-      td
-        .parrot-avatar.img-rounded style="background-color: {{vm.getColorHexById(parrot.color_id)}}"
-          = image_tag 'bow.svg', class: 'parrot-bow', 'ng-show' => 'parrot.sex == "female"'
-        .parrot-description
-          h4
-            | {{parrot.name}} # {{parrot.id}}
-          p
-            | {{parrot.age}} month(s) old
-            span ng-show="parrot.tribal"
-              = ' '
-              span.glyphicon.glyphicon-apple
+        / Info
+        td.parrot-info
+          .parrot-avatar.img-rounded style="background-color: {{vm.getColorHexById(parrot.color_id)}}"
+            = image_tag 'bow.svg', class: 'parrot-bow', 'ng-show' => 'parrot.sex == "female"'
+          .parrot-description
+            h4
+              | {{parrot.name}} # {{parrot.id}}
+            p
+              | {{parrot.age}} month(s) old
+              span ng-show="parrot.tribal"
+                = ' '
+                span.glyphicon.glyphicon-apple
 
-      / Actions
-      td.text-right
-        .btn-group.parrot-actions aria-label="parrot-actions"
+        / Actions
+        td.text-right
+          .btn-group.parrot-actions aria-label="parrot-actions"
 
-          / Tribal switch
-          button.btn.btn-default type="button" ng-click="vm.switchTribal(parrot)" tooltip-placement="top" uib-tooltip="Switch tribal to {{!parrot.tribal}}"
-            span.glyphicon.glyphicon-apple.tribal-switch ng-class="{ active: parrot.tribal }"
+            / Tribal switch
+            button.btn.btn-default type="button" ng-click="vm.switchTribal(parrot)" tooltip-placement="top" uib-tooltip="Switch tribal to {{!parrot.tribal}}"
+              span.glyphicon.glyphicon-apple.tribal-switch ng-class="{ active: parrot.tribal }"
 
-          / Descendants
-          button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.descendants = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find descendants"
-            span D
+            / Descendants
+            button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.descendants = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find descendants"
+              span D
 
-          / Ancestors
-          button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.ancestors = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find ancestors"
-            span A
+            / Ancestors
+            button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.ancestors = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find ancestors"
+              span A
 
-          / Children
-          button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.children = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find children"
-            span C
+            / Children
+            button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.children = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find children"
+              span C
 
-          / Parents
-          button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.parents = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find parents"
-            span P
+            / Parents
+            button.btn.btn-default type="button" ng-click="vm.resetFilter(); vm.filter.parents = parrot.id; vm.indexFiltered()" tooltip-placement="top" uib-tooltip="Find parents"
+              span P
 
-  / Footer
-  tfoot ng-show="vm.parrots.length"
-    / TODO template this, don't have time
-    tr
-      td
-        hr
-        button.btn.btn-default Total: {{vm.parrots.length}}
-        = ' - '
-        uib-pagination.pagination total-items="vm.parrots.length" ng-model="vm.index.currentPage" items-per-page="vm.index.itemsPerPage" max-size="5"
-      td.text-right
-        hr
-        button.btn.btn-warning.reset-filter-button ng-click="vm.resetFilter(true)" Reset filter
+            / Add child
+            button.btn.btn-default type="button" ng-click="vm.addChildClicked(parrot)" tooltip-placement="left" uib-tooltip="Add child" ng-disabled="!parrot.tribal || parrot.age < 12" data-toggle="modal" data-target="#new-parrot-modal"
+              | +
+
+    / Footer
+    tfoot ng-show="vm.parrots.length"
+      / TODO template this, don't have time
+      tr
+        td colspan="2"
+          hr
+          button.btn.btn-default Total: {{vm.parrots.length}}
+          = ' - '
+          uib-pagination.pagination total-items="vm.parrots.length" ng-model="vm.index.currentPage" items-per-page="vm.index.itemsPerPage" max-size="5"
+          = ' - '
+          button.btn.btn-warning.reset-filter-button ng-click="vm.resetFilter(true)" Reset filter

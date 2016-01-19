@@ -48,6 +48,14 @@
           toReturn.push(parrot)
       toReturn
 
+    addChildClicked: (parrot) ->
+      if parrot.sex == 'male'
+        @new.motherId = null
+        @new.fatherId = "#{parrot.id}"
+      else if parrot.sex == 'female'
+        @new.fatherId = null
+        @new.motherId = "#{parrot.id}"
+
     # Returns a list of filtered parrots
     indexFiltered: ->
       @$http
